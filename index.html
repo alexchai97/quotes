@@ -8,11 +8,14 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Ubuntu&display=swap');
-        
-        body {
+
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        body {
             font-family: 'Outfit';
 
             display: grid;
@@ -24,7 +27,13 @@
             user-select: none;
         }
 
-        #author, #text {
+        h1 {
+            font-size: clamp(1.5rem, 0.9681rem + 1.7021vw, 2.5rem);
+            margin-bottom: .25rem;
+        }
+
+        #author,
+        #text {
             text-align: right;
         }
 
@@ -36,8 +45,7 @@
             color: #333;
         }
 
-
-         .scale-up-center {
+        .scale-up-center {
             -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
             animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
         }
@@ -63,6 +71,25 @@
             100% {
                 -webkit-transform: scale(1);
                 transform: scale(1);
+            }
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            #text, #author {
+                text-align: center;
+            }
+            body {
+                padding: 1rem;
             }
         }
     </style>
