@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quotes</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Ubuntu&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit';
+
+            display: grid;
+            place-content: center;
+
+            height: 100vh;
+            padding: 5rem;
+
+            user-select: none;
+
+            
+        }
+
+        #author, #text {
+            text-align: right;
+        }
+
+        #author {
+            color: #555;
+        }
+
+        #text {
+            color: #333;
+        }
+    
+    </style>
+</head>
+
+<body>
+<div>
+    <h1 id="text"></h1>
+    <p id="author"></p>
+
+</div>
+
+    <script>
+
+        const text = document.getElementById('text');
+        const author = document.getElementById('author');
+        fetch("https://type.fit/api/quotes")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                response = data[Math.floor(Math.random() * 11)];
+                console.log(response);
+                text.innerHTML = response.text;
+                author.innerHTML = '- ' + response.author;
+            });
+    </script>
+</body>
+
+</html>
